@@ -16,10 +16,8 @@ passw = ""
 imapserver = "imap.gmail.com"
 
 def deleteEmailIMAP(user, password, IMAP):
-    ss = ["", ""]
     mail = imaplib.IMAP4_SSL(IMAP)
     mail.login(user, password)
-    # Out: list of "folders" aka labels in zoho.
     mail.select("inbox")
     typ, data = mail.search(None, 'ALL')
     for num in data[0].split():
@@ -28,5 +26,4 @@ def deleteEmailIMAP(user, password, IMAP):
     mail.close()
     mail.logout()
     
-
 deleteEmailIMAP(email, passw, imapserver)
