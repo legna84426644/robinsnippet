@@ -18,9 +18,9 @@ token = ""   # <--- input your token here
 headers = {"Authorization": "token " + token}
 
 def doGetRequest(url, headers):
-    '''
+    """
     Do a get request for a url with a header and return the response
-    '''
+    """
     try:
         print "do get request for: " + url
         r = requests.get(url, headers = headers)
@@ -29,17 +29,17 @@ def doGetRequest(url, headers):
     return r
 
 def iso8601ToSec(isoDate):
-    '''
+    """
     Convert a iso 8601 timestamp into seconds (since Jan 1st 1970) 
-    '''
+    """
     utc_dt = datetime.strptime(isoDate, '%Y-%m-%dT%H:%M:%SZ')
     timestamp = (utc_dt - datetime(1970, 1, 1)).total_seconds()
     return timestamp
     
 def getPageNum(res):
-    '''
+    """
     Get the number of response page of a request
-    '''
+    """
     if 'Link' in res.headers:    
         link = res.headers['Link']
         lastLink = link.split(",")[1]
@@ -51,9 +51,9 @@ def getPageNum(res):
     return pageNum
 
 def getremainPage(url, pageMax):
-    '''
+    """
     Get the remain items when the resouce has more than 30 items
-    '''
+    """
     resourceList = []
     if "?" in url:
         pagePara = "&page="
@@ -69,9 +69,9 @@ def getremainPage(url, pageMax):
     return resourceList
 
 def getPublicRepo(user):
-    '''
+    """
     Get a list of repo for a user.
-    '''
+    """
     url = baseURL + "/users/" + user + "/repos"
     r = doGetRequest(url, headers)
     res = r.json()
@@ -83,9 +83,9 @@ def getPublicRepo(user):
     return repoList
 
 def getWatchers(repo):
-    '''
+    """
     Get a list of watchers for a repo
-    '''
+    """
     url = baseURL + "/repos/" + user + "/" + repo + "/subscribers"
     r = doGetRequest(url, headers)
     res = r.json()
@@ -97,9 +97,9 @@ def getWatchers(repo):
     return watchers
 
 def getIssues(repo):
-    '''
+    """
     Get a list of issues for a repo
-    '''
+    """
     url = baseURL + "/repos/" + user + "/" + repo + "/issues?state=open"
     r = doGetRequest(url, headers)
     res = r.json() 
