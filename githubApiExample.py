@@ -3,7 +3,7 @@ Created on Nov 11, 2017
 
 @author: Robin
 
-Get some information of Customer IO's github(https://github.com/customerio):
+Get some information of Customer IO github(https://github.com/customerio):
 - How many total open issues are there across all repositories?
 - Sort the repositories by date updated in descending order.
 - Which repository has the most watchers?
